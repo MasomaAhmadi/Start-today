@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="./css/style.css" />
+
+		<!-- AOS Library -->
+		<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+		<style>
+			.loader {
+				.loader {
+					border: 16px solid #f3f3f3;
+					border-radius: 50%;
+					border-top: 16px solid #3498db;
+					width: 120px;
+					height: 120px;
+				}
+				-webkit-animation: spin 2s linear infinite; 
+				animation: spin 2s linear infinite;
+			}
+
+			@-webkit-keyframes spin {
+				0% {
+					-webkit-transform: rotate(0deg);
+				}
+				100% {
+					-webkit-transform: rotate(360deg);
+				}
+			}
+
+			@keyframes spin {
+				0% {
+					transform: rotate(0deg);
+				}
+				100% {
+					transform: rotate(360deg);
+				}
+			}
+
+			.content {
+				display: none;
+			}
+		</style>
+
+		<title>lets start today!</title>
+	</head>
+
+	<body
+		class="bg-[url('/images/background.jpg')] bg-no-repeat bg-cover bg-center flex items-center flex-col gap-5 min-h-screen p-10"
+		id="body"
+	>
+		<!-- title  -->
+		<div class="w-fit flex items-center justify-center" data-aos="fade-down">
+			<h1
+				class="text-white sm:font-semibold text-lg font-extrabold sm:text-3xl"
+			>
+				How is the weather?
+			</h1>
+			<img
+				src="./images/sun.png"
+				class="w-2/12 h-1/6 md:w-1/12"
+				alt="sun image"
+			/>
+		</div>
+		<!-- searching bar -->
+		<form
+			data-aos="zoom-out"
+			action=""
+			method="get"
+			id="form"
+			class="flex items-center justify-center gap-3 lg:w-[45%] w-[98%] sm:w-4/5"
+		>
+			<input
+				type="text"
+				placeholder="weather of where?"
+				required
+				name="town"
+				id="town"
+				class="w-full rounded-full bg-white text-white px-4 text-lg py-3 outline-1 outline-white/40 backdrop-blur-lg focus:bg-white/20 ease-in-out duration-500"
+			/>
+			<button type="button">
+				<ion-icon
+					id="search"
+					size="large"
+					class="text-white bg-white/50 rounded-full p-2.5 text-lg sm:text-2xl font-black"
+					name="search"
+				></ion-icon>
+			</button>
+		</form>
+
+		<!-- selected city -->
+		<div
+			data-aos="zoom-out-right"
+			class="flex flex-col sm:flex-row w-[95%] sm:w-4/5 bg-white/20 backdrop-blur-sm p-5 md:px-9 rounded-2xl justify-between items-center hover:scale-105 ease-in-out duration-700 text-white lg:w-[45%] h-auto"
+		>
+			<!-- left div  -->
+			<div
+				class="flex justify-center items-center sm:flex-col gap-5 sm:w-1/3 w-full"
+			>
+				<!-- top div  -->
+				<div id="left-div" class="flex flex-col gap-2">
+					<p
+						id="temperature-main"
+						class="text-2xl font-semibold sm:text-3xl sm:font-bold"
+					>
+						25°C
+					</p>
+					<p class="text-lg sm:text-xl font-semibold">Currently</p>
+				</div>
+				<span id="city" class="text-lg sm:text-xl font-semibold"
+					>Herat Afghanistan</span
+				>
+			</div>
+			<!-- right div  -->
+			<div class="image-container w-[80%] sm:w-2/5 relative">
+				<div class="loader">
+				</div>
+				<img
+					class="content"
+					src="https://twemoji.maxcdn.com/2/svg/1f1e6-1f1eb.svg"
+					alt="Country Flag"
+					id="flag"
+				/>
+			</div>
+		</div>
+
+		<!-- specific definition of weather  -->
+		<div
+			data-aos="zoom-out-left"
+			id="definition"
+			class="flex flex-col sm:flex-row justify-between gap-5 bg-blue-600/30 backdrop-blur-sm rounded-2xl p-4 w-[95%] sm:w-4/5 md:3/5 lg:[35%] pr-4 hover:scale-105 ease-in-out duration-700 lg:w-[45%]"
+		>
+			<!-- description col  -->
+			<div
+				id="left-col"
+				class="sm:w-1/2 w-full flex flex-col items-center justify-center md:justify-start gap-11 md:gap-5"
+			>
+				<img
+					src="./images/sun.png"
+					id="weather-img"
+					class="w-full"
+					alt="weather image"
+				/>
+				<div class="flex flex-col text-left -mt-11 md:-mb-0">
+					<strong id="weather" class="text-xl text-cyan-950">Sunny</strong>
+					<p id="weather-des" class="text-lg text-cyan-950">clear sky</p>
+				</div>
+			</div>
+
+			<!-- temperature col  -->
+			<div
+				id="temprature-col"
+				class="sm:w-1/2 w-full flex flex-col items-center justify-center gap-2"
+			>
+				<div
+					class="bg-white/20 backdrop-blur-sm w-full p-2 flex justify-between items-center gap-3 rounded-md md:px-5 md:gap-7"
+				>
+					<ion-icon
+						size="large"
+						class="text-yellow-400"
+						name="thermometer"
+					></ion-icon>
+					<div class="temprature">
+						<p id="temprature" class="font-bold text-xl text-orange-600">
+							26°C
+						</p>
+						<p class="text-lg">temprature</p>
+					</div>
+				</div>
+				<div
+					class="bg-white/20 backdrop-blur-sm w-full p-2 flex items-center justify-between gap-3 rounded-md md:px-5 md:gap-7"
+				>
+					<ion-icon
+						size="large"
+						class="text-yellow-400"
+						name="timer"
+					></ion-icon>
+					<div class="wind speed">
+						<p id="wind" class="font-bold text-xl text-orange-600">20 m/s</p>
+						<p class="text-lg">wind speed</p>
+					</div>
+				</div>
+				<div
+					class="bg-white/20 backdrop-blur-sm w-full p-2 flex items-center justify-between gap-3 rounded-md md:px-5 md:gap-7"
+				>
+					<ion-icon
+						size="large"
+						class="text-yellow-400"
+						name="water"
+					></ion-icon>
+					<div class="Humidity">
+						<p id="humidity" class="font-bold text-xl text-orange-600">10%</p>
+						<p class="text-lg">Humidity</p>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- //quotation -->
+		<div
+			id="container"
+			class="bg-[url('/images/fox.webp')] bg-cover bg-no-repeat bg-center h-auto hover:scale-105 ease-in-out duration-700 lg:w-[45%] w-[95%] sm:w-4/5 mx-auto rounded-2xl"
+			data-aos="flip-up"
+		>
+			<!-- quote div -->
+			<div
+				class="bg-blue-400/40 h-auto p-6 space-y-8 rounded-2xl flex flex-col gap-4"
+			>
+				<!-- quote  -->
+				<div class="pl-6 pt-6 text-cyan-800">
+					<ion-icon
+						class="text-orange-600"
+						name="quote"
+						size="large"
+					></ion-icon>
+					<p class="font-medium text-lg inline text-justify" id="text">
+						Be the chief but never the lord.
+					</p>
+				</div>
+
+				<!-- athour  -->
+				<div
+					class="text-right flex flex-col justify-end items-end mx-3 text-cyan-800"
+				>
+					<p>__ <span class="font-bold" id="author">Lao Tzu</span></p>
+					<p class="w-fit border-b-2 border-solid border-orange-600">
+						Quoted by: <span id="qouted">Masooma Ahmadi</span>
+					</p>
+				</div>
+				<!-- buttons div  -->
+				<div class="flex items-center justify-between font-semibold text-lg">
+					<div class="flex flex-col group">
+						<button
+							class="btns border-b-2 border-yellow-400 hover:animate-rotate-y transition duration-700"
+							id="share"
+						>
+							Share
+						</button>
+						<!-- share div  -->
+						<div
+							class="hidden group-hover:visible group-hover:flex items-center justify-center"
+						>
+							<ion-icon
+								size="large"
+								name="logo-twitter"
+								id="twitterBtn"
+								class="text-orange-600"
+							></ion-icon>
+							<ion-icon
+								size="large"
+								name="logo-whatsapp"
+								id="whatsAppBtn"
+								class="text-orange-600"
+							></ion-icon>
+						</div>
+					</div>
+
+					<button
+						class="btns border-b-2 border-yellow-400 hover:animate-rotate-y transition duration-700"
+						id="change"
+					>
+						New
+					</button>
+				</div>
+			</div>
+		</div>
+
+		<!-- /////////////////////////////////////////////////////////////////////////////// -->
+		<!-- AOS.js -->
+		<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+		<script>
+			// AOS.init();
+			AOS.init({
+				delay: 200, // values from 0 to 3000, with step 50ms
+				duration: 1500, // values from 0 to 3000, with step 50ms
+				once: false, // whether animation should happen only once - while scrolling down
+				mirror: false, // whether elements should animate out while scrolling past them
+			});
+		</script>
+		<script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
+		<script src="js/script.js" type="module"></script>
+		<script src="js/qoutScript.js"></script>
+		<script src="js/qoute.js"></script>
+	</body>
+</html>
