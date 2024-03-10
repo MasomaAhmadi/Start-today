@@ -22,7 +22,7 @@ let city = "";
 async function fetchData() {
 	city = inputEL.value;
 	if (city.trim() === "") return
-	let urlAPI = `http://api.openweathermap.org/data/2.5/weather?q=${city}&APPID=${API}&units=metric`;
+	let urlAPI = `http://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric`;
 	let response = await fetch(urlAPI);
 	let data = await response.json();
 	setData(data);
