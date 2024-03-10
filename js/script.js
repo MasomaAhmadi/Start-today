@@ -21,12 +21,24 @@ let city = "";
 // get data from api
 async function fetchData() {
 	city = inputEL.value;
-	if (city.trim() === "") return
+	if (city.trim() === "") return;
+
 	let urlAPI = `http://api.openweathermap.org/data/2.5/weather?q=${city}&APPID=${API}&units=metric`;
-	let response = await fetch(urlAPI);
-	let data = await response.json();
-	setData(data);
+
+	try {
+		let response = await fetch(urlAPI);
+
+		if (!response.ok) {
+			throw new Error(`API request failed with status ${response.status}`);
+		}
+
+		let data = await response.json();
+		setData(data);
+	} catch (error) {
+		console.error("Error fetching data:", error);
+	}
 }
+
 //set data into template
 async function setData(data) {
 	const mainTemp = data.main.temp;
